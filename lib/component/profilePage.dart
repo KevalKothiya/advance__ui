@@ -279,6 +279,8 @@ class _ProfilePageState extends State<ProfilePage> {
                             )
                           : Container(),
                   Divider(),
+
+                  //////////////////////////////////////////////
                   CupertinoListTile.notched(
                     leading: Icon(CupertinoIcons.settings),
                     title: Text(
