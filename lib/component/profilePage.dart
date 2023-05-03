@@ -282,7 +282,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   CupertinoListTile.notched(
                     leading: Icon(CupertinoIcons.settings),
                     title: Text(
-                      "Settings",
+                      "Settings ",
                       style: TextStyle(
                           color: (Provider.of<Theme_Provider>(context,
                                       listen: false)
