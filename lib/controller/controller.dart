@@ -1,7 +1,8 @@
+// ignore_for_file: camel_case_types, non_constant_identifier_names
+
 import 'dart:io';
 import 'package:advance_ui/model/globals.dart';
 import 'package:advance_ui/model/utils.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -20,11 +20,11 @@ class _MotherPageState extends State<MotherPage> {
   PageController pageController = PageController();
 
   List children = [
-    AddContactPage(),
-    RecentsPage(),
-    ContactsPage(),
-    ChatsPage(),
-    ProfilePage(),
+    const AddContactPage(),
+    const RecentsPage(),
+    const ContactsPage(),
+    const ChatsPage(),
+    const ProfilePage(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class _MotherPageState extends State<MotherPage> {
         ? CupertinoTabScaffold(
             tabBar: CupertinoTabBar(
 
-              items: [
+              items: const [
                 BottomNavigationBarItem(
                     icon: Icon(
                       CupertinoIcons.person_crop_circle_badge_plus,
@@ -93,10 +93,10 @@ class _MotherPageState extends State<MotherPage> {
           )
         : DefaultTabController(
             length: 5,
-            animationDuration: Duration(milliseconds: 400),
+            animationDuration: const Duration(milliseconds: 400),
             child: Scaffold(
               appBar: AppBar(
-                bottom: TabBar(
+                bottom: const TabBar(
                   isScrollable: true,
                   tabs: [
                     Text("Data"),
@@ -106,7 +106,7 @@ class _MotherPageState extends State<MotherPage> {
                     Text("Setting"),
                   ],
                 ),
-                title: Text("Platform Converter"),
+                title: const Text("Platform Converter"),
                 actions: [
                   Transform.scale(
                     scale: 0.09.h,
@@ -120,10 +120,10 @@ class _MotherPageState extends State<MotherPage> {
                           .AlternateValue(),
                     ),
                   ),
-                  SizedBox(),
+                  const SizedBox(),
                 ],
               ),
-              body: TabBarView(children: [
+              body: const TabBarView(children: [
                 AddContactPage(),
                 RecentsPage(),
                 ContactsPage(),

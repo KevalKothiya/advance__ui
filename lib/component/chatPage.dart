@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:io';
 import 'package:advance_ui/controller/controller.dart';
 import 'package:advance_ui/model/utils.dart';
@@ -27,7 +29,7 @@ class _ChatsPageState extends State<ChatsPage> {
           .mobileNumber
           .isNotEmpty)) {
         return Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 alignment: Alignment.topCenter,
                 child: ListView.builder(
                   itemCount: Provider.of<AddContactVariable_provider>(context)
@@ -54,7 +56,7 @@ class _ChatsPageState extends State<ChatsPage> {
                                           foregroundImage: FileImage(File(imageList[i])),
                                         ),
                                         Text(
-                                          "${Provider.of<AddContactVariable_provider>(context).fullName[i]}",
+                                          Provider.of<AddContactVariable_provider>(context).fullName[i],
                                           style: (Provider.of<Theme_Provider>(
                                                       context,
                                                       listen: false)
@@ -74,7 +76,7 @@ class _ChatsPageState extends State<ChatsPage> {
                                                       fontSize: 22),
                                         ),
                                         Text(
-                                          "${Provider.of<AddContactVariable_provider>(context).chats[i]}",
+                                          Provider.of<AddContactVariable_provider>(context).chats[i],
                                           style: (Provider.of<Theme_Provider>(
                                                       context,
                                                       listen: false)
@@ -90,15 +92,15 @@ class _ChatsPageState extends State<ChatsPage> {
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            IconButton(onPressed: (){}, icon: Icon(Icons.edit,),),
+                                            IconButton(onPressed: (){}, icon: const Icon(Icons.edit,),),
                                             IconButton(onPressed: (){
                                               Provider.of<AddContactVariable_provider>(context,listen: false).Delete(Provider.of<AddContactVariable_provider>(context,listen: false).fullName[i],Provider.of<AddContactVariable_provider>(context,listen: false).chats[i],Provider.of<AddContactVariable_provider>(context,listen: false).mobileNumber[i],);
-                                            }, icon: Icon(Icons.delete,),),
+                                            }, icon: const Icon(Icons.delete,),),
                                           ],
                                         ),
                                         CupertinoButton.filled(onPressed: (){
                                           Navigator.pop(context);
-                                        }, child: Text("Cancel"),),
+                                        }, child: const Text("Cancel"),),
                                       ],
                                     ),
                                   );
@@ -112,7 +114,7 @@ class _ChatsPageState extends State<ChatsPage> {
                                 : null,
                           ),
                           title: Text(
-                            "${Provider.of<AddContactVariable_provider>(context).fullName[i]}",
+                            Provider.of<AddContactVariable_provider>(context).fullName[i],
                             style: TextStyle(
                                 color: (Provider.of<Theme_Provider>(context,
                                             listen: false)
@@ -122,8 +124,8 @@ class _ChatsPageState extends State<ChatsPage> {
                                     : CupertinoColors.black),
                           ),
                           subtitle: Text(
-                            "${Provider.of<AddContactVariable_provider>(context).chats[i]}",
-                            style: TextStyle(fontSize: 16),
+                            Provider.of<AddContactVariable_provider>(context).chats[i],
+                            style: const TextStyle(fontSize: 16),
                           ),
                           trailing: Text(
                             "${dateList[i].day}/${dateList[i].month}/${dateList[i].year},${timeList[i].hour}:${timeList[i].minute}",
@@ -135,7 +137,7 @@ class _ChatsPageState extends State<ChatsPage> {
                                 : AllTimeAccessTextTheme.textStyleLight,
                           ),
                         ),
-                        Divider(),
+                        const Divider(),
                       ],
                     );
                   },
@@ -143,7 +145,7 @@ class _ChatsPageState extends State<ChatsPage> {
               );
       } else {
         return Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 alignment: Alignment.center,
                 child: Icon(
                   Icons.hourglass_empty,
@@ -156,7 +158,7 @@ class _ChatsPageState extends State<ChatsPage> {
                 .chats
                 .isNotEmpty)
             ? Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 alignment: Alignment.topCenter,
                 child: ListView.builder(
                     itemCount: Provider.of<AddContactVariable_provider>(context)
@@ -184,7 +186,7 @@ class _ChatsPageState extends State<ChatsPage> {
                                             foregroundImage: FileImage(File(imageList[i])),
                                           ),
                                           Text(
-                                            "${Provider.of<AddContactVariable_provider>(context).fullName[i]}",
+                                            Provider.of<AddContactVariable_provider>(context).fullName[i],
                                             style: (Provider.of<Theme_Provider>(
                                                 context,
                                                 listen: false)
@@ -204,7 +206,7 @@ class _ChatsPageState extends State<ChatsPage> {
                                                 fontSize: 22),
                                           ),
                                           Text(
-                                            "${Provider.of<AddContactVariable_provider>(context).chats[i]}",
+                                            Provider.of<AddContactVariable_provider>(context).chats[i],
                                             style: (Provider.of<Theme_Provider>(
                                                 context,
                                                 listen: false)
@@ -220,19 +222,19 @@ class _ChatsPageState extends State<ChatsPage> {
                                           Row(
                                             mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
-                                              IconButton(onPressed: (){}, icon: Icon(Icons.edit,),),
+                                              IconButton(onPressed: (){}, icon: const Icon(Icons.edit,),),
                                               IconButton(onPressed: (){
                                                 Provider.of<AddContactVariable_provider>(context,listen: false).Delete(Provider.of<AddContactVariable_provider>(context,listen: false).fullName[i],Provider.of<AddContactVariable_provider>(context,listen: false).chats[i],Provider.of<AddContactVariable_provider>(context,listen: false).mobileNumber[i],);
                                                 Navigator.pop(context);
                                                 setState(() {
 
                                                 });
-                                              }, icon: Icon(Icons.delete,),),
+                                              }, icon: const Icon(Icons.delete,),),
                                             ],
                                           ),
                                           ElevatedButton(onPressed: (){
                                             Navigator.pop(context);
-                                          }, child: Text("Cancel"),),
+                                          }, child: const Text("Cancel"),),
                                         ],
                                       ),
                                     );
@@ -246,9 +248,9 @@ class _ChatsPageState extends State<ChatsPage> {
                               ],
                             ),
                             title: Text(
-                                '${Provider.of<AddContactVariable_provider>(context).fullName[i]}'),
+                                Provider.of<AddContactVariable_provider>(context).fullName[i]),
                             subtitle: Text(
-                                '${Provider.of<AddContactVariable_provider>(context).chats[i]}'),
+                                Provider.of<AddContactVariable_provider>(context).chats[i]),
                             leading: CircleAvatar(
                               radius: 4.h,
                               foregroundImage: (imageList != null)
@@ -256,7 +258,7 @@ class _ChatsPageState extends State<ChatsPage> {
                                   : null,
                             ),
                           ),
-                          Divider(),
+                          const Divider(),
                         ],
                       );
                     }),

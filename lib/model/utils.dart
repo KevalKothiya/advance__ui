@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 class AppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       bodyMedium: TextStyle(
         fontSize: 16,
       ),
@@ -18,7 +18,7 @@ class AppTheme {
   );
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       bodyMedium: TextStyle(
         fontSize: 16,
       ),
@@ -31,13 +31,13 @@ class AppTheme {
 }
 
 class AllTimeAccessTextTheme {
-  static TextStyle textStyleLight = TextStyle(
+  static TextStyle textStyleLight = const TextStyle(
     color: CupertinoColors.black,
     fontSize: 16,
     decoration: TextDecoration.none,
   );
 
-  static TextStyle textStyleDark = TextStyle(
+  static TextStyle textStyleDark = const TextStyle(
     color: CupertinoColors.white,
     fontSize: 16,
     decoration: TextDecoration.none,

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, unnecessary_null_comparison, file_names
+
 import 'dart:io';
 
 import 'package:advance_ui/controller/controller.dart';
@@ -5,7 +7,6 @@ import 'package:advance_ui/model/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:sizer/sizer.dart';
 
@@ -19,52 +20,6 @@ class AddContactPage extends StatefulWidget {
 class _AddContactPageState extends State<AddContactPage> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   GlobalKey<FormState> formKey1 = GlobalKey<FormState>();
-
-  File? file;
-
-  late DateTime initialDate;
-
-  late DateTime initialCupertinoDate;
-  late DateTime initialCupertinoTime;
-  late TimeOfDay initialTime;
-  late String periodName;
-
-  int currentStep = 0;
-
-  Future<void> getImageFromCamera() async {
-    ImagePicker picker = ImagePicker();
-
-    XFile? image = await picker.pickImage(source: ImageSource.camera);
-
-    String? path = image!.path;
-
-    if (image != null) {
-      file = File(path);
-    }
-  }
-
-  Future<void> getImageFromGallery() async {
-    ImagePicker picker = ImagePicker();
-
-    XFile? image = await picker.pickImage(source: ImageSource.gallery);
-
-    String? path = image!.path;
-
-    if (image != null) {
-      file = File(path);
-    }
-  }
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    initialDate = DateTime.now();
-    initialCupertinoDate = DateTime.now();
-    initialCupertinoTime = DateTime.now();
-    initialTime = TimeOfDay.now();
-    (initialTime.hour <= 12) ? periodName = "am" : periodName = "pm";
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -85,28 +40,28 @@ class _AddContactPageState extends State<AddContactPage> {
                         ? SizedBox(
                             height: 11.h,
                           )
-                        : SizedBox(),
+                        : const SizedBox(),
                     Stack(
                       alignment: FractionalOffset.center,
                       children: [
                         CircleAvatar(
                           radius: 10.h,
                           foregroundImage:
-                          (Provider.of<ImagePickerProvider>(context)
-                              .image !=
-                              null)
-                              ? FileImage(
-                              Provider.of<ImagePickerProvider>(context)
-                                  .image as File)
-                              : null,
+                              (Provider.of<ImagePickerProvider>(context)
+                                          .image !=
+                                      null)
+                                  ? FileImage(
+                                      Provider.of<ImagePickerProvider>(context)
+                                          .image as File)
+                                  : null,
                         ),
                         IconButton(
                           onPressed: () {
                             Provider.of<ImagePickerProvider>(context,
-                                listen: false)
+                                    listen: false)
                                 .getImageFromCamera();
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             CupertinoIcons.camera_fill,
                           ),
                         ),
@@ -119,12 +74,12 @@ class _AddContactPageState extends State<AddContactPage> {
                       children: [
                         Expanded(
                           child: Column(
-                            children: [
+                            children: const [
                               Icon(CupertinoIcons.person),
                             ],
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 2,
                         ),
                         Expanded(
@@ -138,19 +93,17 @@ class _AddContactPageState extends State<AddContactPage> {
                               }
                             },
                             placeholderStyle: TextStyle(
-                              color: (Provider.of<Theme_Provider>(
-                                  context)
-                                  .theme_model
-                                  .isDarkMode)
+                              color: (Provider.of<Theme_Provider>(context)
+                                      .theme_model
+                                      .isDarkMode)
                                   ? CupertinoColors.white
                                   : CupertinoColors.black,
                             ),
                             style: TextStyle(
-                              color: (Provider.of<Theme_Provider>(
-                                  context)
-                                  .theme_model
-                                  .isDarkMode ==
-                                  true)
+                              color: (Provider.of<Theme_Provider>(context)
+                                          .theme_model
+                                          .isDarkMode ==
+                                      true)
                                   ? CupertinoColors.white
                                   : CupertinoColors.black,
                             ),
@@ -158,18 +111,15 @@ class _AddContactPageState extends State<AddContactPage> {
                             placeholder: "Full Name",
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    color: (Provider.of<Theme_Provider>(
-                                        context)
-                                        .theme_model
-                                        .isDarkMode ==
-                                        true)
+                                    color: (Provider.of<Theme_Provider>(context)
+                                                .theme_model
+                                                .isDarkMode ==
+                                            true)
                                         ? CupertinoColors.white
-                                        : CupertinoColors.black
-                                )
-                            ),
+                                        : CupertinoColors.black)),
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     ),
                     SizedBox(
@@ -179,14 +129,14 @@ class _AddContactPageState extends State<AddContactPage> {
                       children: [
                         Expanded(
                           child: Column(
-                            children: [
+                            children: const [
                               Icon(
                                 CupertinoIcons.phone,
                               )
                             ],
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 2,
                         ),
                         Expanded(
@@ -198,33 +148,28 @@ class _AddContactPageState extends State<AddContactPage> {
                             ],
                             placeholder: "Phone Number",
                             placeholderStyle: TextStyle(
-                              color: (Provider.of<Theme_Provider>(
-                                  context)
-                                  .theme_model
-                                  .isDarkMode)
+                              color: (Provider.of<Theme_Provider>(context)
+                                      .theme_model
+                                      .isDarkMode)
                                   ? CupertinoColors.white
                                   : CupertinoColors.black,
                             ),
                             style: TextStyle(
-                              color: (Provider.of<Theme_Provider>(
-                                  context)
-                                  .theme_model
-                                  .isDarkMode ==
-                                  true)
+                              color: (Provider.of<Theme_Provider>(context)
+                                          .theme_model
+                                          .isDarkMode ==
+                                      true)
                                   ? CupertinoColors.white
                                   : CupertinoColors.black,
                             ),
                             decoration: BoxDecoration(
-                              border: Border.all(
-                                color: (Provider.of<Theme_Provider>(
-                                  context)
-                                  .theme_model
-                                  .isDarkMode ==
-                                  true)
-                                ? CupertinoColors.white
-                                : CupertinoColors.black
-                              )
-                            ),
+                                border: Border.all(
+                                    color: (Provider.of<Theme_Provider>(context)
+                                                .theme_model
+                                                .isDarkMode ==
+                                            true)
+                                        ? CupertinoColors.white
+                                        : CupertinoColors.black)),
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return "Mobile Number...";
@@ -234,7 +179,7 @@ class _AddContactPageState extends State<AddContactPage> {
                             },
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     ),
                     SizedBox(
@@ -244,14 +189,14 @@ class _AddContactPageState extends State<AddContactPage> {
                       children: [
                         Expanded(
                           child: Column(
-                            children: [
+                            children: const [
                               Icon(
                                 CupertinoIcons.chat_bubble_2,
                               )
                             ],
                           ),
                         ),
-                        Spacer(
+                        const Spacer(
                           flex: 2,
                         ),
                         Expanded(
@@ -260,33 +205,28 @@ class _AddContactPageState extends State<AddContactPage> {
                             controller: chatConversationController,
                             placeholder: "Chat Conversation",
                             placeholderStyle: TextStyle(
-                              color: (Provider.of<Theme_Provider>(
-                                  context)
-                                  .theme_model
-                                  .isDarkMode)
+                              color: (Provider.of<Theme_Provider>(context)
+                                      .theme_model
+                                      .isDarkMode)
                                   ? CupertinoColors.white
                                   : CupertinoColors.black,
                             ),
                             style: TextStyle(
-                              color: (Provider.of<Theme_Provider>(
-                                  context)
-                                  .theme_model
-                                  .isDarkMode ==
-                                  true)
+                              color: (Provider.of<Theme_Provider>(context)
+                                          .theme_model
+                                          .isDarkMode ==
+                                      true)
                                   ? CupertinoColors.white
                                   : CupertinoColors.black,
                             ),
                             decoration: BoxDecoration(
                                 border: Border.all(
-                                    color: (Provider.of<Theme_Provider>(
-                                        context)
-                                        .theme_model
-                                        .isDarkMode ==
-                                        true)
+                                    color: (Provider.of<Theme_Provider>(context)
+                                                .theme_model
+                                                .isDarkMode ==
+                                            true)
                                         ? CupertinoColors.white
-                                        : CupertinoColors.black
-                                )
-                            ),
+                                        : CupertinoColors.black)),
                             validator: (val) {
                               if (val!.isEmpty) {
                                 return "Chat Conversation ...";
@@ -296,7 +236,7 @@ class _AddContactPageState extends State<AddContactPage> {
                             },
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                       ],
                     ),
                     SizedBox(
@@ -311,7 +251,12 @@ class _AddContactPageState extends State<AddContactPage> {
                                 builder: (context) {
                                   return Container(
                                     height: 35.h,
-                                    color: (Provider.of<Theme_Provider>(context,listen: false).theme_model.isDarkMode)?Colors.black:Colors.white,
+                                    color: (Provider.of<Theme_Provider>(context,
+                                                listen: false)
+                                            .theme_model
+                                            .isDarkMode)
+                                        ? Colors.black
+                                        : Colors.white,
                                     child: CupertinoDatePicker(
                                       maximumYear: 2099,
                                       minimumYear: 2000,
@@ -332,20 +277,20 @@ class _AddContactPageState extends State<AddContactPage> {
                                   );
                                 });
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             CupertinoIcons.calendar,
                           ),
                         ),
                         CupertinoButton(
+                            onPressed: null,
                             child: Text(
-                                "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialDate.day}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialDate.month}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialDate.year}"),
-                            onPressed: null),
+                                "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialDate.day}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialDate.month}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialDate.year}")),
                       ],
                     ),
                     Row(
                       children: [
                         IconButton(
-                          icon: Icon(
+                          icon: const Icon(
                             CupertinoIcons.time_solid,
                           ),
                           onPressed: () {
@@ -357,7 +302,13 @@ class _AddContactPageState extends State<AddContactPage> {
                                     color: Colors.white,
                                     child: CupertinoDatePicker(
                                       use24hFormat: false,
-                                      backgroundColor: (Provider.of<Theme_Provider>(context,listen: false).theme_model.isDarkMode)?CupertinoColors.black:CupertinoColors.white,
+                                      backgroundColor:
+                                          (Provider.of<Theme_Provider>(context,
+                                                      listen: false)
+                                                  .theme_model
+                                                  .isDarkMode)
+                                              ? CupertinoColors.black
+                                              : CupertinoColors.white,
                                       initialDateTime:
                                           Provider.of<DatePicker_Provider>(
                                                   context)
@@ -370,7 +321,9 @@ class _AddContactPageState extends State<AddContactPage> {
                                                 listen: false)
                                             .datePicker_Model
                                             .initialCupertinoTime = val;
-                                        Provider.of<DatePicker_Provider>(context).initializationDate();
+                                        Provider.of<DatePicker_Provider>(
+                                                context)
+                                            .initializationDate();
                                         // Provider.of<DatePicker_Provider>(context,listen: false).Converter();
                                       },
                                     ),
@@ -397,26 +350,27 @@ class _AddContactPageState extends State<AddContactPage> {
                                             .hour <=
                                         12)
                                     ? CupertinoButton(
+                                        onPressed: null,
                                         child: Text(
-                                            "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.hour}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.minute} pm"),
-                                        onPressed: null)
+                                            "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.hour}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.minute} pm"))
                                     : CupertinoButton(
+                                        onPressed: null,
                                         child: Text(
-                                            "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.hour - 12}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.minute} pm"),
-                                        onPressed: null)
+                                            "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.hour - 12}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.minute} pm"))
                                 : CupertinoButton(
+                                    onPressed: null,
                                     child: Text(
-                                        "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.hour}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.minute} am"),
-                                    onPressed: null)
-                            : CupertinoButton(
-                                child: Text("Pick Time"), onPressed: null)
+                                        "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.hour}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.minute} am"))
+                            : const CupertinoButton(
+                                onPressed: null,
+                                child: Text("Pick Time"))
                       ],
                     ),
                     SizedBox(
                       height: 3.h,
                     ),
                     CupertinoButton.filled(
-                      child: Text("SAVE"),
+                      child: const Text("SAVE"),
                       onPressed: () {
                         if (Provider.of<ImagePickerProvider>(context,
                                     listen: false)
@@ -424,60 +378,31 @@ class _AddContactPageState extends State<AddContactPage> {
                             null) {
                           if (formKey1.currentState!.validate()) {
                             formKey1.currentState!.save();
-                            print(
-                                "====================================================");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.fullName}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.mobileNumber}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.Chats}");
-                            print(
-                                "====================================================");
 
                             Provider.of<AddContactVariable_provider>(context,
                                     listen: false)
                                 .initialization();
 
-                            print(
-                                "====================================================");
-                            print("CHECK");
-                            print("CHECK");
-                            print("CHECK");
-                            print(
-                                "====================================================");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.fullName}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.mobileNumber}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.Chats}");
-                            print(
-                                "====================================================");
-
                             Provider.of<AddContactVariable_provider>(context,
                                     listen: false)
                                 .AddAllContactinitialization();
 
-                            Provider.of<ImagePickerProvider>(context,listen: false).Clear();
-                            Provider.of<DatePicker_Provider>(context,listen: false).datePicker_Model.initialDate = DateTime.now();
-                            Provider.of<DatePicker_Provider>(context,listen: false).datePicker_Model.initialCupertinoTime = DateTime.now();
-                            Provider.of<DatePicker_Provider>(context,listen: false).datePicker_Model.initialTime = TimeOfDay.now();
-                            print(
-                                "=======================List====================");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).fullName}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).mobileNumber}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).chats}");
-                            print(
-                                "=======================List====================");
-                            print(
-                                "=======================Done====================");
-                            setState(() {
-
-                            });
+                            Provider.of<ImagePickerProvider>(context,
+                                    listen: false)
+                                .Clear();
+                            Provider.of<DatePicker_Provider>(context,
+                                    listen: false)
+                                .datePicker_Model
+                                .initialDate = DateTime.now();
+                            Provider.of<DatePicker_Provider>(context,
+                                    listen: false)
+                                .datePicker_Model
+                                .initialCupertinoTime = DateTime.now();
+                            Provider.of<DatePicker_Provider>(context,
+                                    listen: false)
+                                .datePicker_Model
+                                .initialTime = TimeOfDay.now();
+                            setState(() {});
                           }
                         }
                       },
@@ -520,43 +445,19 @@ class _AddContactPageState extends State<AddContactPage> {
                                     listen: false)
                                 .getImageFromCamera();
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             CupertinoIcons.camera_fill,
                           ),
                         ),
                       ],
                     ),
-                    // CircleAvatar(
-                    //   radius: 10.h,
-                    //   foregroundImage:
-                    //       (Provider.of<ImagePickerProvider>(context).image !=
-                    //               null)
-                    //           ? FileImage(
-                    //               Provider.of<ImagePickerProvider>(context)
-                    //                   .image as File)
-                    //           : null,
-                    //   child: IconButton(
-                    //     onPressed: () async {
-                    //       // print(file.toString());
-                    //       // await getImageFromCamera();
-                    //       // setState(() {});
-                    //       // print(file.toString());
-                    //       Provider.of<ImagePickerProvider>(context,
-                    //               listen: false)
-                    //           .getImageFromCamera();
-                    //     },
-                    //     icon: Icon(
-                    //       Icons.camera,
-                    //     ),
-                    //   ),
-                    // ),
                     SizedBox(
                       height: 5.h,
                     ),
                     TextFormField(
                       controller: fullNameController,
                       keyboardType: TextInputType.name,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(Icons.person),
                           hintText: "Full Name",
@@ -578,7 +479,7 @@ class _AddContactPageState extends State<AddContactPage> {
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
                       ],
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(Icons.call),
                           hintText: "Phone Number",
@@ -597,7 +498,7 @@ class _AddContactPageState extends State<AddContactPage> {
                     TextFormField(
                       controller: chatConversationController,
                       keyboardType: TextInputType.name,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                           border: OutlineInputBorder(),
                           prefixIcon: Icon(Icons.message_outlined),
                           hintText: "Chat Conversation",
@@ -631,7 +532,7 @@ class _AddContactPageState extends State<AddContactPage> {
                                   .initializationDate();
                             }
                           },
-                          icon: Icon(Icons.date_range_outlined),
+                          icon: const Icon(Icons.date_range_outlined),
                         ),
                         (Provider.of<DatePicker_Provider>(context,
                                         listen: false)
@@ -640,7 +541,7 @@ class _AddContactPageState extends State<AddContactPage> {
                                 null)
                             ? Text(
                                 "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialDate.day}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialDate.month}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialDate.year}")
-                            : Text("Pick Date"),
+                            : const Text("Pick Date"),
                       ],
                     ),
                     Row(
@@ -661,30 +562,34 @@ class _AddContactPageState extends State<AddContactPage> {
                                   .initializationTime();
                             }
                           },
-                          icon: Icon(Icons.access_time_outlined),
+                          icon: const Icon(Icons.access_time_outlined),
                         ),
-                        // (Provider.of<DatePicker_Provider>(context,listen: false).datePicker_Model.initialTime.hour != null)
-                        //     ?
                         (Provider.of<DatePicker_Provider>(context,
                                         listen: false)
                                     .datePicker_Model
                                     .initialTime
-                                    .period
-                                    .index ==
-                                1)
+                                    .hour !=
+                                null)
                             ? (Provider.of<DatePicker_Provider>(context,
                                             listen: false)
                                         .datePicker_Model
                                         .initialTime
-                                        .hour >
-                                    12)
-                                ? Text(
-                                    "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.hour - 12}/${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.minute} ${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.period.name}")
+                                        .period
+                                        .index ==
+                                    1)
+                                ? (Provider.of<DatePicker_Provider>(context,
+                                                listen: false)
+                                            .datePicker_Model
+                                            .initialTime
+                                            .hour >
+                                        12)
+                                    ? Text(
+                                        "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.hour - 12}/${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.minute} ${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.period.name}")
+                                    : Text(
+                                        "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.hour}/${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.minute} ${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.period.name}")
                                 : Text(
                                     "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.hour}/${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.minute} ${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.period.name}")
-                            : Text(
-                                "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.hour}/${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.minute} ${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialTime.period.name}")
-                        // : Text("Pick Date"),
+                            : const Text("Pick Date"),
                       ],
                     ),
                     ElevatedButton(
@@ -695,36 +600,13 @@ class _AddContactPageState extends State<AddContactPage> {
                             null) {
                           if (formKey.currentState!.validate()) {
                             formKey.currentState!.save();
-                            print(
-                                "====================================================");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.fullName}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.mobileNumber}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.Chats}");
-                            print(
-                                "====================================================");
 
                             Provider.of<AddContactVariable_provider>(context,
                                     listen: false)
                                 .initialization();
-                            Provider.of<DatePicker_Provider>(context,listen: false).AddinitializationInList();
-                            print(
-                                "====================================================");
-                            print("CHECK");
-                            print("CHECK");
-                            print("CHECK");
-                            print(
-                                "====================================================");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.fullName}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.mobileNumber}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).addContactVariable_Model.Chats}");
-                            print(
-                                "====================================================");
+                            Provider.of<DatePicker_Provider>(context,
+                                    listen: false)
+                                .AddinitializationInList();
 
                             Provider.of<AddContactVariable_provider>(context,
                                     listen: false)
@@ -732,33 +614,29 @@ class _AddContactPageState extends State<AddContactPage> {
                             Provider.of<ImagePickerProvider>(context,
                                     listen: false)
                                 .Clear();
-                            Provider.of<DatePicker_Provider>(context,listen: false).datePicker_Model.initialDate = DateTime.now();
-                            Provider.of<DatePicker_Provider>(context,listen: false).datePicker_Model.initialCupertinoTime = DateTime.now();
-                            Provider.of<DatePicker_Provider>(context,listen: false).datePicker_Model.initialTime = TimeOfDay.now();
-
-                            print(
-                                "=======================List====================");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).fullName}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).mobileNumber}");
-                            print(
-                                "${Provider.of<AddContactVariable_provider>(context, listen: false).chats}");
-                            print(
-                                "=======================List====================");
-                            print(
-                                "=======================Done====================");
+                            Provider.of<DatePicker_Provider>(context,
+                                    listen: false)
+                                .datePicker_Model
+                                .initialDate = DateTime.now();
+                            Provider.of<DatePicker_Provider>(context,
+                                    listen: false)
+                                .datePicker_Model
+                                .initialCupertinoTime = DateTime.now();
+                            Provider.of<DatePicker_Provider>(context,
+                                    listen: false)
+                                .datePicker_Model
+                                .initialTime = TimeOfDay.now();
                             setState(() {});
                           }
                         } else {
-                          SnackBar snackBar = SnackBar(
+                          SnackBar snackBar = const SnackBar(
                             content: Text("Fill Image"),
                             backgroundColor: Colors.red,
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
                       },
-                      child: Text("Save"),
+                      child: const Text("Save"),
                     ),
                   ],
                 ),

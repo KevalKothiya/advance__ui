@@ -21,7 +21,7 @@ class _ProfilePageState extends State<ProfilePage> {
             .switchValue_Model
             .switchValue)
         ? Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             alignment: Alignment.topCenter,
             child: SingleChildScrollView(
               child: Column(
@@ -33,67 +33,67 @@ class _ProfilePageState extends State<ProfilePage> {
                               .profile_model
                               .name
                               .isNotEmpty)
-                          ? Container(
-                              child: Column(
-                                children: [
-                                  Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 10.h,
-                                        foregroundImage: (image != null)
-                                            ? FileImage(image as File)
-                                            : null,
+                          ? Column(
+                              children: [
+                                Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 10.h,
+                                      foregroundImage: (image != null)
+                                          ? FileImage(image as File)
+                                          : null,
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        Provider.of<ProfileImage_Provider>(
+                                                context,
+                                                listen: false)
+                                            .getImageFromCamera();
+                                      },
+                                      icon: const Icon(
+                                        Icons.camera,
                                       ),
-                                      IconButton(
-                                        onPressed: () {
-                                          Provider.of<ProfileImage_Provider>(
-                                                  context,
-                                                  listen: false)
-                                              .getImageFromCamera();
-                                        },
-                                        icon: Icon(
-                                          Icons.camera,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  Text(
-                                    "${Provider.of<Profile_Provider>(context).profile_model.name}",
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 2.h,
+                                ),
+                                Text(
+                                  Provider.of<Profile_Provider>(context)
+                                      .profile_model
+                                      .name,
+                                  style: (Provider.of<Theme_Provider>(context,
+                                              listen: false)
+                                          .theme_model
+                                          .isDarkMode)
+                                      ? AllTimeAccessTextTheme.textStyleDark
+                                          .copyWith(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold)
+                                      : AllTimeAccessTextTheme.textStyleLight
+                                          .copyWith(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                    Provider.of<Profile_Provider>(context)
+                                        .profile_model
+                                        .bio,
                                     style: (Provider.of<Theme_Provider>(context,
                                                 listen: false)
                                             .theme_model
                                             .isDarkMode)
                                         ? AllTimeAccessTextTheme.textStyleDark
                                             .copyWith(
-                                                fontSize: 30,
-                                                fontWeight: FontWeight.bold)
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 20)
                                         : AllTimeAccessTextTheme.textStyleLight
                                             .copyWith(
-                                                fontSize: 30,
-                                                fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                      "${Provider.of<Profile_Provider>(context).profile_model.bio}",
-                                      style: (Provider.of<Theme_Provider>(
-                                                  context,
-                                                  listen: false)
-                                              .theme_model
-                                              .isDarkMode)
-                                          ? AllTimeAccessTextTheme.textStyleDark
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 20)
-                                          : AllTimeAccessTextTheme
-                                              .textStyleLight
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 20)),
-                                ],
-                              ),
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 20)),
+                              ],
                             )
                           : Container()
                       : Container(),
@@ -105,7 +105,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         )
                       : Container(),
                   CupertinoListTile.notched(
-                    leading: Icon(CupertinoIcons.person_crop_circle_fill),
+                    leading: const Icon(CupertinoIcons.person_crop_circle_fill),
                     title: Text(
                       "Profile",
                       style: TextStyle(
@@ -116,7 +116,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ? CupertinoColors.white
                               : CupertinoColors.black),
                     ),
-                    subtitle: Text("Update Profile Date"),
+                    subtitle: const Text("Update Profile Date"),
                     trailing: CupertinoSwitch(
                       value: Provider.of<ProfileSwitchValue_Provider>(context)
                           .profileSwitchValue_Model
@@ -128,12 +128,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       },
                     ),
                   ),
-                  // (Provider.of<ProfileSwitchValue_Provider>(context,
-                  //             listen: false)
-                  //         .profileSwitchValue_Model
-                  //         .ProfileSwitchValue)
-                  //     ? Container()
-                  //     : Divider(),
                   (Provider.of<Profile_Provider>(context)
                           .profile_model
                           .name
@@ -167,7 +161,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                     listen: false)
                                                 .getImageFromCamera();
                                           },
-                                          icon: Icon(
+                                          icon: const Icon(
                                             CupertinoIcons.camera_fill,
                                           ),
                                         ),
@@ -175,7 +169,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                     CupertinoTextFormFieldRow(
                                       controller: profileNameController,
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       textAlign: TextAlign.center,
                                       placeholder: "Enter Name",
                                       placeholderStyle: TextStyle(
@@ -205,7 +199,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     ),
                                     CupertinoTextFormFieldRow(
                                       controller: profileBioController,
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       textAlign: TextAlign.center,
                                       placeholder: "Enter Your Bio.",
                                       placeholderStyle: TextStyle(
@@ -241,7 +235,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
                                         ElevatedButton(
-                                          child: Text("SAVE"),
+                                          child: const Text("SAVE"),
                                           onPressed: () {
                                             if (image != null) {
                                               if (formKey2.currentState!
@@ -257,7 +251,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                           },
                                         ),
                                         ElevatedButton(
-                                            child: Text("CLEAR"),
+                                            child: const Text("CLEAR"),
                                             onPressed: () {
                                               Provider.of<Profile_Provider>(
                                                       context,
@@ -278,9 +272,9 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             )
                           : Container(),
-                  Divider(),
+                  const Divider(),
                   CupertinoListTile.notched(
-                    leading: Icon(CupertinoIcons.settings),
+                    leading: const Icon(CupertinoIcons.settings),
                     title: Text(
                       "Settings ",
                       style: TextStyle(
@@ -291,7 +285,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               ? CupertinoColors.white
                               : CupertinoColors.black),
                     ),
-                    subtitle: Text("Update Setting"),
+                    subtitle: const Text("Update Setting"),
                     trailing: CupertinoSwitch(
                       value: Provider.of<SettingSwitchValue_Provider>(context)
                           .settingsSwitchValue_Model
@@ -307,79 +301,76 @@ class _ProfilePageState extends State<ProfilePage> {
                               listen: false)
                           .settingsSwitchValue_Model
                           .SettingsSwitchValue)
-                      ? Container(
-                          child: Column(
-                            children: [
-                              Divider(),
-                              ListView(
-                                shrinkWrap: true,
-                                children: [
-                                  CupertinoListTile.notched(
-                                    leading: Icon(Icons.brightness_6),
-                                    title: Text(
-                                      "Dark Theme",
-                                      style: TextStyle(
-                                          color: (Provider.of<Theme_Provider>(
-                                                      context,
-                                                      listen: false)
-                                                  .theme_model
-                                                  .isDarkMode)
-                                              ? CupertinoColors.white
-                                              : CupertinoColors.black),
-                                    ),
-                                    subtitle: Text("Dark Mode"),
-                                    trailing: Transform.scale(
-                                      scale: 0.09.h,
-                                      child: CupertinoSwitch(
-                                        value:
-                                            Provider.of<Theme_Provider>(context)
+                      ? Column(
+                          children: [
+                            const Divider(),
+                            ListView(
+                              shrinkWrap: true,
+                              children: [
+                                CupertinoListTile.notched(
+                                  leading: const Icon(Icons.brightness_6),
+                                  title: Text(
+                                    "Dark Theme",
+                                    style: TextStyle(
+                                        color: (Provider.of<Theme_Provider>(
+                                                    context,
+                                                    listen: false)
                                                 .theme_model
-                                                .isDarkMode,
-                                        onChanged: (val) {
-                                          Provider.of<Theme_Provider>(context,
-                                                  listen: false)
-                                              .AlternateValue();
-                                        },
-                                      ),
+                                                .isDarkMode)
+                                            ? CupertinoColors.white
+                                            : CupertinoColors.black),
+                                  ),
+                                  subtitle: const Text("Dark Mode"),
+                                  trailing: Transform.scale(
+                                    scale: 0.09.h,
+                                    child: CupertinoSwitch(
+                                      value:
+                                          Provider.of<Theme_Provider>(context)
+                                              .theme_model
+                                              .isDarkMode,
+                                      onChanged: (val) {
+                                        Provider.of<Theme_Provider>(context,
+                                                listen: false)
+                                            .AlternateValue();
+                                      },
                                     ),
                                   ),
-                                  Divider(),
-                                  CupertinoListTile.notched(
-                                    leading: Icon(Icons.android),
-                                    title: Text(
-                                      "Android Theme",
-                                      style: TextStyle(
-                                          color: (Provider.of<Theme_Provider>(
-                                                      context,
-                                                      listen: false)
-                                                  .theme_model
-                                                  .isDarkMode)
-                                              ? CupertinoColors.white
-                                              : CupertinoColors.black),
-                                    ),
-                                    subtitle: Text("Material Desing"),
-                                    trailing: Transform.scale(
-                                      scale: 0.09.h,
-                                      child: CupertinoSwitch(
-                                        value:
-                                            Provider.of<SwitchValue_Provider>(
-                                                    context)
-                                                .switchValue_Model
-                                                .switchValue,
-                                        onChanged: (val) {
-                                          Provider.of<SwitchValue_Provider>(
-                                                  context,
-                                                  listen: false)
-                                              .AlternateValue();
-                                        },
-                                      ),
+                                ),
+                                const Divider(),
+                                CupertinoListTile.notched(
+                                  leading: const Icon(Icons.android),
+                                  title: Text(
+                                    "Android Theme",
+                                    style: TextStyle(
+                                        color: (Provider.of<Theme_Provider>(
+                                                    context,
+                                                    listen: false)
+                                                .theme_model
+                                                .isDarkMode)
+                                            ? CupertinoColors.white
+                                            : CupertinoColors.black),
+                                  ),
+                                  subtitle: const Text("Material Desing"),
+                                  trailing: Transform.scale(
+                                    scale: 0.09.h,
+                                    child: CupertinoSwitch(
+                                      value: Provider.of<SwitchValue_Provider>(
+                                              context)
+                                          .switchValue_Model
+                                          .switchValue,
+                                      onChanged: (val) {
+                                        Provider.of<SwitchValue_Provider>(
+                                                context,
+                                                listen: false)
+                                            .AlternateValue();
+                                      },
                                     ),
                                   ),
-                                  Divider(),
-                                ],
-                              ),
-                            ],
-                          ),
+                                ),
+                                const Divider(),
+                              ],
+                            ),
+                          ],
                         )
                       : Container(),
                 ],
@@ -403,74 +394,74 @@ class _ProfilePageState extends State<ProfilePage> {
                                   .profile_model
                                   .name !=
                               "")
-                          ? Container(
-                              child: Column(
-                                children: [
-                                  Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      CircleAvatar(
-                                        radius: 10.h,
-                                        foregroundImage: (image != null)
-                                            ? FileImage(image as File)
-                                            : null,
+                          ? Column(
+                              children: [
+                                Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    CircleAvatar(
+                                      radius: 10.h,
+                                      foregroundImage: (image != null)
+                                          ? FileImage(image as File)
+                                          : null,
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        Provider.of<ProfileImage_Provider>(
+                                                context,
+                                                listen: false)
+                                            .getImageFromCamera();
+                                      },
+                                      icon: const Icon(
+                                        Icons.camera,
                                       ),
-                                      IconButton(
-                                        onPressed: () {
-                                          Provider.of<ProfileImage_Provider>(
-                                                  context,
-                                                  listen: false)
-                                              .getImageFromCamera();
-                                        },
-                                        icon: Icon(
-                                          Icons.camera,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 2.h,
-                                  ),
-                                  Text(
-                                    "${Provider.of<Profile_Provider>(context).profile_model.name}",
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 2.h,
+                                ),
+                                Text(
+                                  Provider.of<Profile_Provider>(context)
+                                      .profile_model
+                                      .name,
+                                  style: (Provider.of<Theme_Provider>(context,
+                                              listen: false)
+                                          .theme_model
+                                          .isDarkMode)
+                                      ? AllTimeAccessTextTheme.textStyleDark
+                                          .copyWith(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold)
+                                      : AllTimeAccessTextTheme.textStyleLight
+                                          .copyWith(
+                                              fontSize: 30,
+                                              fontWeight: FontWeight.bold),
+                                ),
+                                Text(
+                                    Provider.of<Profile_Provider>(context)
+                                        .profile_model
+                                        .bio,
                                     style: (Provider.of<Theme_Provider>(context,
                                                 listen: false)
                                             .theme_model
                                             .isDarkMode)
                                         ? AllTimeAccessTextTheme.textStyleDark
                                             .copyWith(
-                                                fontSize: 30,
-                                                fontWeight: FontWeight.bold)
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 20)
                                         : AllTimeAccessTextTheme.textStyleLight
                                             .copyWith(
-                                                fontSize: 30,
-                                                fontWeight: FontWeight.bold),
-                                  ),
-                                  Text(
-                                      "${Provider.of<Profile_Provider>(context).profile_model.bio}",
-                                      style: (Provider.of<Theme_Provider>(
-                                                  context,
-                                                  listen: false)
-                                              .theme_model
-                                              .isDarkMode)
-                                          ? AllTimeAccessTextTheme.textStyleDark
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 20)
-                                          : AllTimeAccessTextTheme
-                                              .textStyleLight
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w400,
-                                                  fontSize: 20)),
-                                ],
-                              ),
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 20)),
+                              ],
                             )
                           : Container()
                       : Container(),
                   ListTile(
-                    leading: Icon(Icons.person_4_sharp),
-                    title: Text("Profile"),
-                    subtitle: Text("Update Profile Date"),
+                    leading: const Icon(Icons.person_4_sharp),
+                    title: const Text("Profile"),
+                    subtitle: const Text("Update Profile Date"),
                     trailing: Switch(
                       value: Provider.of<ProfileSwitchValue_Provider>(context)
                           .profileSwitchValue_Model
@@ -486,7 +477,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               listen: false)
                           .profileSwitchValue_Model
                           .ProfileSwitchValue)
-                      ? Divider()
+                      ? const Divider()
                       : Container(),
                   (Provider.of<Profile_Provider>(context, listen: false)
                               .profile_model
@@ -499,7 +490,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               .ProfileSwitchValue)
                           ? Container(
                               alignment: Alignment.topCenter,
-                              padding: EdgeInsets.only(right: 26, left: 26),
+                              padding:
+                                  const EdgeInsets.only(right: 26, left: 26),
                               child: Form(
                                 key: formKey2,
                                 child: SingleChildScrollView(
@@ -518,7 +510,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                 : null,
                                           ),
                                           IconButton(
-                                            icon: Icon(
+                                            icon: const Icon(
                                                 CupertinoIcons.camera_fill),
                                             onPressed: () {
                                               Provider.of<ProfileImage_Provider>(
@@ -531,7 +523,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ),
                                       TextFormField(
                                         controller: profileNameController,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           border: InputBorder.none,
                                           hintText: "Enter Name",
                                         ),
@@ -555,7 +547,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ),
                                       TextFormField(
                                         controller: profileBioController,
-                                        decoration: InputDecoration(
+                                        decoration: const InputDecoration(
                                           border: InputBorder.none,
                                           hintText: "Enter Your Bio.",
                                         ),
@@ -588,7 +580,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                               .withOpacity(0.5)
                                                           : Colors.deepPurple
                                                               .shade50)),
-                                              child: Text("SAVE"),
+                                              child: const Text("SAVE"),
                                               onPressed: () {
                                                 if (image != null) {
                                                   if (formKey2.currentState!
@@ -617,7 +609,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                               .withOpacity(0.5)
                                                           : Colors.deepPurple
                                                               .shade50)),
-                                              child: Text("CLEAR"),
+                                              child: const Text("CLEAR"),
                                               onPressed: () {
                                                 Provider.of<Profile_Provider>(
                                                         context,
@@ -637,9 +629,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             )
                           : Container(),
                   ListTile(
-                    leading: Icon(Icons.settings),
-                    title: Text("Settings"),
-                    subtitle: Text("Update Setting"),
+                    leading: const Icon(Icons.settings),
+                    title: const Text("Settings"),
+                    subtitle: const Text("Update Setting"),
                     trailing: Switch(
                       value: Provider.of<SettingSwitchValue_Provider>(context)
                           .settingsSwitchValue_Model
@@ -656,20 +648,20 @@ class _ProfilePageState extends State<ProfilePage> {
                           .settingsSwitchValue_Model
                           .SettingsSwitchValue)
                       ? Container(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             left: 22,
                             right: 22,
                           ),
                           child: Column(
                             children: [
-                              Divider(),
+                              const Divider(),
                               ListView(
                                 shrinkWrap: true,
                                 children: [
                                   ListTile(
-                                    leading: Icon(Icons.brightness_6),
-                                    title: Text("Dark Theme"),
-                                    subtitle: Text("Dark Mode"),
+                                    leading: const Icon(Icons.brightness_6),
+                                    title: const Text("Dark Theme"),
+                                    subtitle: const Text("Dark Mode"),
                                     trailing: Transform.scale(
                                       scale: 0.09.h,
                                       child: Switch(
@@ -685,11 +677,11 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ),
                                     ),
                                   ),
-                                  Divider(),
+                                  const Divider(),
                                   ListTile(
-                                    leading: Icon(Icons.apple),
-                                    title: Text("IOS Theme"),
-                                    subtitle: Text("Cupertino Desing"),
+                                    leading: const Icon(Icons.apple),
+                                    title: const Text("IOS Theme"),
+                                    subtitle: const Text("Cupertino Desing"),
                                     trailing: Transform.scale(
                                       scale: 0.09.h,
                                       child: Switch(
@@ -707,7 +699,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                       ),
                                     ),
                                   ),
-                                  Divider(),
+                                  const Divider(),
                                 ],
                               ),
                             ],
