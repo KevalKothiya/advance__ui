@@ -26,6 +26,7 @@ class _MotherPageState extends State<MotherPage> {
     const ChatsPage(),
     const ProfilePage(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return (Provider.of<SwitchValue_Provider>(context)
@@ -33,7 +34,6 @@ class _MotherPageState extends State<MotherPage> {
             .switchValue)
         ? CupertinoTabScaffold(
             tabBar: CupertinoTabBar(
-
               items: const [
                 BottomNavigationBarItem(
                     icon: Icon(
@@ -63,12 +63,15 @@ class _MotherPageState extends State<MotherPage> {
               ],
             ),
             tabBuilder: (context, i) => CupertinoTabView(
-
               builder: (context) {
                 return CupertinoPageScaffold(
                   navigationBar: CupertinoNavigationBar(
-                    backgroundColor: (Provider.of<Theme_Provider>(context,listen: false).theme_model.isDarkMode)?Colors.black38:CupertinoColors.white,
-
+                    backgroundColor:
+                        (Provider.of<Theme_Provider>(context, listen: false)
+                                .theme_model
+                                .isDarkMode)
+                            ? Colors.black38
+                            : CupertinoColors.white,
                     trailing: CupertinoSwitch(
                       value: Provider.of<SwitchValue_Provider>(context)
                           .switchValue_Model
@@ -81,10 +84,13 @@ class _MotherPageState extends State<MotherPage> {
                     middle: Text(
                       "Cupertino App",
                       style: TextStyle(
-                        color: (Provider.of<Theme_Provider>(context,listen: false).theme_model.isDarkMode)?CupertinoColors.white:CupertinoColors.black
-                      ),
+                          color: (Provider.of<Theme_Provider>(context,
+                                      listen: false)
+                                  .theme_model
+                                  .isDarkMode)
+                              ? CupertinoColors.white
+                              : CupertinoColors.black),
                     ),
-
                   ),
                   child: children[i],
                 );

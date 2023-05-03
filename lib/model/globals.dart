@@ -70,5 +70,3 @@ class ProfileVariable_Model {
     required this.bio,
   });
 }
-
-

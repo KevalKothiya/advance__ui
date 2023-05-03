@@ -342,8 +342,7 @@ class _AddContactPageState extends State<AddContactPage> {
                                         .initialCupertinoTime
                                         .hour >=
                                     12)
-                                ? (Provider.of<DatePicker_Provider>(
-                                                context,
+                                ? (Provider.of<DatePicker_Provider>(context,
                                                 listen: false)
                                             .datePicker_Model
                                             .initialCupertinoTime
@@ -362,8 +361,7 @@ class _AddContactPageState extends State<AddContactPage> {
                                     child: Text(
                                         "${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.hour}-${Provider.of<DatePicker_Provider>(context).datePicker_Model.initialCupertinoTime.minute} am"))
                             : const CupertinoButton(
-                                onPressed: null,
-                                child: Text("Pick Time"))
+                                onPressed: null, child: Text("Pick Time"))
                       ],
                     ),
                     SizedBox(

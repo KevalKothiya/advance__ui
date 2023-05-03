@@ -51,7 +51,9 @@ class _ContactsPageState extends State<ContactsPage> {
                                       : null,
                                 ),
                                 title: Text(
-                                  Provider.of<AddContactVariable_provider>(context).fullName[i],
+                                  Provider.of<AddContactVariable_provider>(
+                                          context)
+                                      .fullName[i],
                                   style: TextStyle(
                                       color: (Provider.of<Theme_Provider>(
                                                   context,
@@ -62,7 +64,9 @@ class _ContactsPageState extends State<ContactsPage> {
                                           : CupertinoColors.black),
                                 ),
                                 subtitle: Text(
-                                  Provider.of<AddContactVariable_provider>(context).chats[i],
+                                  Provider.of<AddContactVariable_provider>(
+                                          context)
+                                      .chats[i],
                                   style: const TextStyle(fontSize: 16),
                                 ),
                                 trailing: IconButton(
@@ -135,7 +139,6 @@ class _ContactsPageState extends State<ContactsPage> {
                           return Column(
                             children: [
                               ListTile(
-
                                 leading: CircleAvatar(
                                   radius: 4.h,
                                   foregroundImage: (imageList != null)
@@ -143,14 +146,18 @@ class _ContactsPageState extends State<ContactsPage> {
                                       : null,
                                 ),
                                 title: Text(
-                                  Provider.of<AddContactVariable_provider>(context).fullName[i],
+                                  Provider.of<AddContactVariable_provider>(
+                                          context)
+                                      .fullName[i],
                                   style: const TextStyle(
                                     fontWeight: FontWeight.w500,
                                     color: Colors.black,
                                   ),
                                 ),
                                 subtitle: Text(
-                                    Provider.of<AddContactVariable_provider>(context).chats[i]),
+                                    Provider.of<AddContactVariable_provider>(
+                                            context)
+                                        .chats[i]),
                                 trailing: IconButton(
                                     onPressed: () async {
                                       Uri uri = Uri.parse(

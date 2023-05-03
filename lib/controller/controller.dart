@@ -94,7 +94,7 @@ class DatePicker_Provider extends ChangeNotifier {
   }
 }
 
-class AddContactVariable_provider extends ChangeNotifier{
+class AddContactVariable_provider extends ChangeNotifier {
   List<String> fullName = [];
   List<String> mobileNumber = [];
   List<String> chats = [];
@@ -105,7 +105,7 @@ class AddContactVariable_provider extends ChangeNotifier{
 
   AddContactVariable_provider({required this.addContactVariable_Model});
 
-  initialization () async {
+  initialization() async {
     addContactVariable_Model.fullName = fullNameController.text;
     addContactVariable_Model.mobileNumber = phoneumberController.text;
     addContactVariable_Model.Chats = chatConversationController.text;
@@ -113,7 +113,8 @@ class AddContactVariable_provider extends ChangeNotifier{
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
     await preferences.setString('FullName', addContactVariable_Model.fullName);
-    await preferences.setString('MobileNumber', addContactVariable_Model.mobileNumber);
+    await preferences.setString(
+        'MobileNumber', addContactVariable_Model.mobileNumber);
     await preferences.setString('Chats', addContactVariable_Model.Chats);
     notifyListeners();
   }
@@ -127,7 +128,6 @@ class AddContactVariable_provider extends ChangeNotifier{
     phoneumberController.clear();
     chatConversationController.clear();
 
-
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
     await preferences.setStringList('FullNameList', fullName);
@@ -136,14 +136,14 @@ class AddContactVariable_provider extends ChangeNotifier{
     notifyListeners();
   }
 
-  AddRecentCall(fullName,mobileNumber,chats) async {
+  AddRecentCall(fullName, mobileNumber, chats) async {
     recentCallFullName.add(fullName);
     recentCallMobileNumber.add(mobileNumber);
     recentCallChats.add(chats);
     notifyListeners();
   }
 
-  Delete(fullName,mobileNumber,chats) async {
+  Delete(fullName, mobileNumber, chats) async {
     this.fullName.remove(fullName);
     this.mobileNumber.remove(mobileNumber);
     this.chats.remove(chats);
@@ -151,7 +151,7 @@ class AddContactVariable_provider extends ChangeNotifier{
   }
 }
 
-class Profile_Provider extends ChangeNotifier{
+class Profile_Provider extends ChangeNotifier {
   Profile_Model profile_model;
 
   Profile_Provider({required this.profile_model});
@@ -182,8 +182,7 @@ class Profile_Provider extends ChangeNotifier{
   }
 }
 
-
-class ImagePickerProvider extends ChangeNotifier{
+class ImagePickerProvider extends ChangeNotifier {
   File? image;
 
   Future<void> getImageFromCamera() async {
@@ -194,16 +193,14 @@ class ImagePickerProvider extends ChangeNotifier{
 
     String? path = _image!.path;
 
-    if(_image != null){
+    if (_image != null) {
       image = File(path);
       imageList.add(path);
-
     }
     notifyListeners();
   }
 
   Future<void> getImageFromGallery() async {
-
     ImagePicker picker = ImagePicker();
     notifyListeners();
 
@@ -211,7 +208,7 @@ class ImagePickerProvider extends ChangeNotifier{
 
     String? path = _image!.path;
 
-    if(_image!= null ){
+    if (_image != null) {
       image = File(path);
       imageList.add(path);
     }
@@ -224,8 +221,7 @@ class ImagePickerProvider extends ChangeNotifier{
   }
 }
 
-class ProfileImage_Provider extends ChangeNotifier{
-
+class ProfileImage_Provider extends ChangeNotifier {
   Future<void> getImageFromCamera() async {
     ImagePicker picker = ImagePicker();
     notifyListeners();
@@ -234,17 +230,14 @@ class ProfileImage_Provider extends ChangeNotifier{
 
     String? path = _image!.path;
 
-    if(_image != null){
+    if (_image != null) {
       image = File(path);
-    notifyListeners();
+      notifyListeners();
     }
   }
-  clear(){
+
+  clear() {
     image = null;
     notifyListeners();
   }
 }
-
-
-
-

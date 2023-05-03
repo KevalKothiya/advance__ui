@@ -55,12 +55,9 @@ TextEditingController fullNameController = TextEditingController();
 TextEditingController phoneumberController = TextEditingController();
 TextEditingController chatConversationController = TextEditingController();
 
-
 TextEditingController profileNameController = TextEditingController();
 TextEditingController profileBioController = TextEditingController();
 
 GlobalKey<FormState> formKey2 = GlobalKey<FormState>();
 
 File? image;
-
-

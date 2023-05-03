@@ -56,7 +56,9 @@ class _RecentsPageState extends State<RecentsPage> {
                                             : null,
                                       ),
                                       title: Text(
-                                        Provider.of<AddContactVariable_provider>(context).recentCallFullName[i],
+                                        Provider.of<AddContactVariable_provider>(
+                                                context)
+                                            .recentCallFullName[i],
                                         style: TextStyle(
                                             color: (Provider.of<Theme_Provider>(
                                                         context,
@@ -66,8 +68,10 @@ class _RecentsPageState extends State<RecentsPage> {
                                                 ? CupertinoColors.white
                                                 : CupertinoColors.black),
                                       ),
-                                      subtitle: Text(
-                                          Provider.of<AddContactVariable_provider>(context).recentCallMobileNumber[i]),
+                                      subtitle: Text(Provider.of<
+                                                  AddContactVariable_provider>(
+                                              context)
+                                          .recentCallMobileNumber[i]),
                                       trailing: Row(
                                         mainAxisSize: MainAxisSize.min,
                                         children: const [
@@ -130,10 +134,15 @@ class _RecentsPageState extends State<RecentsPage> {
                                   ],
                                 ),
                                 title: Text(
-                                    Provider.of<AddContactVariable_provider>(context).recentCallFullName[i]),
+                                    Provider.of<AddContactVariable_provider>(
+                                            context)
+                                        .recentCallFullName[i]),
                                 subtitle: Text(
-                                    Provider.of<AddContactVariable_provider>(context).recentCallMobileNumber[i]),
-                                trailing: const Icon(Icons.info_outline_rounded),
+                                    Provider.of<AddContactVariable_provider>(
+                                            context)
+                                        .recentCallMobileNumber[i]),
+                                trailing:
+                                    const Icon(Icons.info_outline_rounded),
                               ),
                               const Divider(),
                             ],
