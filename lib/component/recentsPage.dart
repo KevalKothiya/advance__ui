@@ -43,8 +43,9 @@ class _RecentsPageState extends State<RecentsPage> {
                               Row(
                                 children: [
                                   const Expanded(
-                                      child: Icon(CupertinoIcons
-                                          .phone_fill_arrow_up_right)),
+                                    child: Icon(CupertinoIcons
+                                        .phone_fill_arrow_up_right),
+                                  ),
                                   Expanded(
                                     flex: 40,
                                     child: CupertinoListTile(
