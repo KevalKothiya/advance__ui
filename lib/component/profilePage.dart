@@ -35,6 +35,9 @@ class _ProfilePageState extends State<ProfilePage> {
                               .isNotEmpty)
                           ? Column(
                               children: [
+                                (Provider.of<Theme_Provider>(context,listen: false).theme_model.isDarkMode)?SizedBox(
+              height: 11.h,
+            ):Container(),
                                 Stack(
                                   alignment: Alignment.center,
                                   children: [
@@ -411,6 +414,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                                 context,
                                                 listen: false)
                                             .getImageFromCamera();
+                                        setState(() {
+
+                                        });
                                       },
                                       icon: const Icon(
                                         Icons.camera,

@@ -34,7 +34,7 @@ class _ChatsPageState extends State<ChatsPage> {
           padding: const EdgeInsets.all(16),
           alignment: Alignment.topCenter,
           child: ListView.builder(
-            itemCount: Provider.of<AddContactVariable_provider>(context)
+            itemCount: Provider.of<AddContactVariable_provider>(context,listen: false)
                 .fullName
                 .length,
             itemBuilder: (context, i) {
@@ -197,7 +197,7 @@ class _ChatsPageState extends State<ChatsPage> {
               padding: const EdgeInsets.all(16),
               alignment: Alignment.topCenter,
               child: ListView.builder(
-                  itemCount: Provider.of<AddContactVariable_provider>(context)
+                  itemCount: Provider.of<AddContactVariable_provider>(context,listen: false)
                       .chats
                       .length,
                   itemBuilder: (context, i) {
