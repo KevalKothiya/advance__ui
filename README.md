@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+<img src="https://user-images.githubusercontent.com/131429045/236157853-44629c8a-07b6-4873-9ae8-3b1cda0d7edc.png" width="220px">
+<img src="https://user-images.githubusercontent.com/131429045/236157901-9cdd7bd3-9a44-4e74-8f77-f1aafe13e40e.png" width="220px">
+<img src="https://user-images.githubusercontent.com/131429045/236157908-546e693b-23c9-4222-8105-cde49d94eba4.png" width="220px">
+
 ![Screenshot_20230503_232827](https://user-images.githubusercontent.com/131429045/236157853-44629c8a-07b6-4873-9ae8-3b1cda0d7edc.png)
 ![Screenshot_20230504_140929](https://user-images.githubusercontent.com/131429045/236157901-9cdd7bd3-9a44-4e74-8f77-f1aafe13e40e.png)
 ![Screenshot_20230504_140940](https://user-images.githubusercontent.com/131429045/236157908-546e693b-23c9-4222-8105-cde49d94eba4.png)
